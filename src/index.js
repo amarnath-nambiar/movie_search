@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './style.css';
-import App from './App';
 import SearchMovies from './searchMovies';
 // import * as serviceWorker from './serviceWorker';
 
