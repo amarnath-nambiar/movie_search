@@ -4,6 +4,7 @@ import './style.css';
 export default function SearchMovie(){
 
   const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
   const searchMovies = async (e) => {
         e.preventDefault();
 
@@ -18,6 +19,7 @@ export default function SearchMovie(){
         }
     }
     return (
+      <>
         <form className="form" onSubmit={searchMovies}>
             <label className="label" htmlFor="query">Movie Name</label>
             <input className="input" type="text" name="query"
@@ -27,6 +29,16 @@ export default function SearchMovie(){
             <button className="button" type="submit">Search</button>
         </form>
         <div className="card-list">
-        </div>
+                {movies.filter(movie => movie.poster_path).map(movie => (
+                    <div className="card" key={movie.id}>
+                        <img className="card--image"
+                            src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
+                            alt={movie.title + ' poster'}
+                            />
+
+                    </div>
+                ))}
+            </div>
+      </>      
     )
 }
